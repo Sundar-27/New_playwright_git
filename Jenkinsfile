@@ -16,21 +16,23 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test --reporter=allure'  // Run Playwright tests
+                bat 'npx playwright test'  // Run Playwright tests without Allure reporter
             }
         }
 
         stage('Publish Reports') {
             steps {
-                allure results: [[path: 'allure-results']]
+                // Remove allure results step since you're not using it
+                // allure results: [[path: 'allure-results']]
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts 'allure-results/**'  // Save test reports
-            junit '**/results.xml'  // Publish test results
+            // No need to archive Allure results or junit if not using allure
+            // archiveArtifacts 'allure-results/**'  
+            // junit '**/results.xml'  // Publish test results, you may need to adjust this based on Playwright output
         }
     }
 }
