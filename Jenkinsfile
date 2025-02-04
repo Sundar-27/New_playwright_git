@@ -14,6 +14,12 @@ pipeline {
             }
         }
 
+        stage('Install Playwright Browsers') {
+            steps {
+                bat 'npx playwright install'  // Install Playwright browsers
+            }
+        }
+
         stage('Run Playwright Tests') {
             steps {
                 bat 'npx playwright test'  // Run Playwright tests without Allure reporter
