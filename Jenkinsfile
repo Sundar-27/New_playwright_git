@@ -10,13 +10,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'  // Install Playwright dependencies
+                bat 'npm install'  // Install Playwright dependencies
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test --reporter=allure'  // Run Playwright tests
+                bat 'npx playwright test --reporter=allure'  // Run Playwright tests
             }
         }
 
