@@ -22,17 +22,16 @@ pipeline {
 
         stage('Publish Reports') {
             steps {
-                // Remove allure results step since you're not using it
-                // allure results: [[path: 'allure-results']]
+                // No allure step, so no action needed here
+                echo 'Publishing test reports...'  // Example placeholder
             }
         }
     }
 
     post {
         always {
-            // No need to archive Allure results or junit if not using allure
-            // archiveArtifacts 'allure-results/**'  
-            // junit '**/results.xml'  // Publish test results, you may need to adjust this based on Playwright output
+            // No need for Allure artifacts, but we can archive other reports if necessary
+            echo 'Post actions executed, no specific reports to publish.'
         }
     }
 }
